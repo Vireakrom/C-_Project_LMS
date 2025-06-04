@@ -16,20 +16,21 @@ namespace LibraryProject.Main
         {
             InitializeComponent();
             Database.getConnection();
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             contentPanel.Controls.Clear();
-            contentPanel.Controls.Add(mainPanel);
-            mainPanel.Dock = DockStyle.Fill;
+            dashBoard1.Dock = DockStyle.Fill;
+            contentPanel.Controls.Add(dashBoard1);
+
         }
         public void HideContentPanel()
         {
             contentPanel.Controls.Clear();
-            contentPanel.Controls.Add(mainPanel);
-            mainPanel.Dock = DockStyle.Fill;
-
+            dashBoard1.Dock = DockStyle.Fill;
+            contentPanel.Controls.Add(dashBoard1);
         }
         private void BooksToolStripMenuItem_Click(object sender, EventArgs e)
         {
