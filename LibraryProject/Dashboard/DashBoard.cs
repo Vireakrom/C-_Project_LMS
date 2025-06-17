@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryProject.Main;
 
@@ -85,7 +81,7 @@ namespace LibraryProject.Dashboard
                 {
                     conn.Open();
                     cmd.Connection = conn;
-                    cmd.CommandText = "SELECT COUNT(*) FROM Transactions WHERE IsReturn = 0";
+                    cmd.CommandText = "SELECT COUNT(*) FROM Transactions";
                     int totalBooks = (int)cmd.ExecuteScalar();
                     lbTotalBookBorrow.Text += totalBooks.ToString();
                 }

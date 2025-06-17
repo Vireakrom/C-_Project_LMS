@@ -88,6 +88,11 @@
     <Compile Include="Dashboard\DashBoard.Designer.cs">
       <DependentUpon>DashBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSetBook.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetBook.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +106,20 @@
       <DependentUpon>FormReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Books\LibraryA4DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraryA4DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LibraryA4DataSet.cs">
+      <DependentUpon>LibraryA4DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="LibraryA4DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LibraryA4DataSet.xsd</DependentUpon>
@@ -166,6 +185,9 @@
     <EmbeddedResource Include="Dashboard\DashBoard.resx">
       <DependentUpon>DashBoard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +207,7 @@
       <DependentUpon>Reader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reader\ReportReader.rdlc" />
+    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="Return\FormReportReturn.resx">
       <DependentUpon>FormReportReturn.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +224,28 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Books\LibraryA4DataSet.xss">
+      <DependentUpon>LibraryA4DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBook.xsc">
+      <DependentUpon>DataSetBook.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBook.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBook.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetBook.xss">
+      <DependentUpon>DataSetBook.xsd</DependentUpon>
+    </None>
+    <None Include="LibraryA4DataSet.xsc">
+      <DependentUpon>LibraryA4DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LibraryA4DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LibraryA4DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LibraryA4DataSet.xss">
       <DependentUpon>LibraryA4DataSet.xsd</DependentUpon>
     </None>
     <None Include="Reader\LibraryA4DataSet1.xsc">
