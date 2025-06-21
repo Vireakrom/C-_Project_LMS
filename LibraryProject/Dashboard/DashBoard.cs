@@ -14,7 +14,7 @@ namespace LibraryProject.Dashboard
         SqlCommand cmd = new SqlCommand();
         SqlDataAdapter da = new SqlDataAdapter();
         DataSet ds = new DataSet();
-        DataView dv;
+
         public DashBoard()
         {
             InitializeComponent();

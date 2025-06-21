@@ -22,6 +22,9 @@ namespace LibraryProject.Borrow
         public UserControlBorrow()
         {
             InitializeComponent();
+            dataGridViewBook.DataBindingComplete += DataGridViewBook_DataBindingComplete;
+            dataGridViewReader.DataBindingComplete += DataGridViewReader_DataBindingComplete;
+            dataGridViewBorrow.DataBindingComplete += DataGridViewBorrow_DataBindingComplete;
         }
 
         private void BtnShowBookAndReader_Click(object sender, EventArgs e)
@@ -225,7 +228,6 @@ namespace LibraryProject.Borrow
                                     {
                                         // Successfully updated the book's quantity
                                         MessageBox.Show("Book borrowed successfully.");
-                                        BtnShowBookAndReader_Click(null, null); // Refresh the book and reader lists
                                         ButtonShowBorrow_Click(null, null); // Refresh the borrow list
                                     }
                                     else
@@ -500,6 +502,222 @@ if (e.RowIndex >= 0)
             {
                 mainForm.HideContentPanel(); // Call the method from the main form
             }
+        }
+
+        private void UserControlBorrow_Load(object sender, EventArgs e)
+        {
+            using (var conn = Database.getConnection())
+            {
+
+                //Show all books
+                try
+                {
+                    conn.Open();
+
+                    var conditions = new List<string>();
+                    string sql = "SELECT * FROM Books WHERE 1=1";
+
+                    cmd.Parameters.Clear();
+
+
+
+
+                    conditions.Add("AvailableQuantity > 0");
+
+
+
+                    sql += " AND " + string.Join(" AND ", conditions) + " ORDER BY Title";
+                    cmd.CommandText = sql;
+                    cmd.Connection = conn;
+                    da = new SqlDataAdapter(cmd);
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    dv = ds.Tables[0].DefaultView;
+                    dataGridViewBook.DataSource = dv;
+
+                    dataGridViewBook.Columns["BookID"].Visible = false;
+                    // Change column headers
+                    if (dataGridViewBook.Columns.Contains("Title"))
+                        dataGridViewBook.Columns["Title"].HeaderText = "Book Title";
+
+                    if (dataGridViewBook.Columns.Contains("Author"))
+                        dataGridViewBook.Columns["Author"].HeaderText = "Author Name";
+
+                    if (dataGridViewBook.Columns.Contains("ISBN"))
+                        dataGridViewBook.Columns["ISBN"].HeaderText = "ISBN Code";
+
+                    if (dataGridViewBook.Columns.Contains("AvailableQuantity"))
+                        dataGridViewBook.Columns["AvailableQuantity"].HeaderText = "In Stock";
+
+
+
+                    dataGridViewBook.ClearSelection();
+
+                    conn.Close();
+
+
+                    if (dv.Count == 0)
+                        MessageBox.Show("No results found.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            //Show all readers
+            using (var conn = Database.getConnection())
+            {
+                try
+                {
+                    conn.Open();
+
+                    var conditions = new List<string>();
+                    string sql = "SELECT * FROM Readers WHERE 1=1";
+
+                    cmd.Parameters.Clear();
+
+
+
+                    conditions.Add("isActive = 1");
+
+
+
+                    sql += " AND " + string.Join(" AND ", conditions) + " ORDER BY FullName";
+                    cmd.CommandText = sql;
+                    cmd.Connection = conn;
+                    da = new SqlDataAdapter(cmd);
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    dv = ds.Tables[0].DefaultView;
+                    dataGridViewReader.DataSource = dv;
+
+                    dataGridViewReader.Columns["ReaderID"].Visible = false;
+                    dataGridViewReader.Columns["isActive"].Visible = false;
+                    // Change column headers
+                    if (dataGridViewReader.Columns.Contains("FullName"))
+                        dataGridViewReader.Columns["FullName"].HeaderText = "Full Name";
+
+                    if (dataGridViewReader.Columns.Contains("Email"))
+                        dataGridViewReader.Columns["Email"].HeaderText = "Email";
+
+                    if (dataGridViewReader.Columns.Contains("Phone"))
+                        dataGridViewReader.Columns["Phone"].HeaderText = "Phone";
+
+                    if (dataGridViewReader.Columns.Contains("RegisterDate"))
+                        dataGridViewReader.Columns["RegisterDate"].HeaderText = "Register Date";
+
+
+
+                    dataGridViewReader.ClearSelection();
+
+                    conn.Close();
+
+
+                    if (dv.Count == 0)
+                        MessageBox.Show("No results found.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            using (var conn = Database.getConnection())
+            {
+                try
+                {
+                    conn.Open();
+
+                    var cmd = new SqlCommand();
+                    var conditions = new List<string>();
+                    string sql = @"
+                SELECT 
+                    t.TransactionID,
+                    r.FullName AS ReaderName,
+                    b.Title AS BookTitle,
+                    t.BorrowDate,
+                    t.DueDate
+
+                FROM Transactions t
+                INNER JOIN Readers r ON t.ReaderID = r.ReaderID
+                INNER JOIN Books b ON t.BookID = b.BookID
+                WHERE 1=1
+            ";
+
+
+                    // Always show not returned
+                    conditions.Add("t.isReturn = 0");
+
+                    // Add conditions to SQL
+                    if (conditions.Count > 0)
+                        sql += " AND " + string.Join(" AND ", conditions);
+
+                    sql += " ORDER BY t.TransactionID";
+
+                    cmd.CommandText = sql;
+                    cmd.Connection = conn;
+
+                    da = new SqlDataAdapter(cmd);
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    dv = ds.Tables[0].DefaultView;
+                    dataGridViewBorrow.DataSource = dv;
+
+
+                    // Optional: set headers
+                    if (dataGridViewBorrow.Columns.Contains("TransactionID"))
+                        dataGridViewBorrow.Columns["TransactionID"].HeaderText = "Transaction ID";
+
+                    if (dataGridViewBorrow.Columns.Contains("ReaderName"))
+                        dataGridViewBorrow.Columns["ReaderName"].HeaderText = "Reader Name";
+
+                    if (dataGridViewBorrow.Columns.Contains("BookTitle"))
+                        dataGridViewBorrow.Columns["BookTitle"].HeaderText = "Book Title";
+
+                    if (dataGridViewBorrow.Columns.Contains("BorrowDate"))
+                        dataGridViewBorrow.Columns["BorrowDate"].HeaderText = "Borrow Date";
+
+                    if (dataGridViewBorrow.Columns.Contains("DueDate"))
+                        dataGridViewBorrow.Columns["DueDate"].HeaderText = "Due Date";
+
+
+
+                    dataGridViewBorrow.ClearSelection();
+
+                    if (ds.Tables[0].Rows.Count == 0)
+                        MessageBox.Show("No results found.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        private void DataGridViewBook_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridViewBook.ClearSelection();
+        }
+
+        private void DataGridViewReader_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridViewReader.ClearSelection();
+        }
+
+        private void DataGridViewBorrow_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridViewBorrow.ClearSelection();
         }
     }
 }

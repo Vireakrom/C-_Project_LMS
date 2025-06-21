@@ -95,10 +95,10 @@
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(86, 10);
+            this.label1.Location = new System.Drawing.Point(106, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 41);
+            this.label1.Size = new System.Drawing.Size(167, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Return Books";
             // 
@@ -106,20 +106,20 @@
             // 
             this.isbn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.isbn.AutoSize = true;
-            this.isbn.Location = new System.Drawing.Point(15, 52);
+            this.isbn.Location = new System.Drawing.Point(17, 62);
             this.isbn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.isbn.Name = "isbn";
-            this.isbn.Size = new System.Drawing.Size(136, 42);
+            this.isbn.Size = new System.Drawing.Size(132, 22);
             this.isbn.TabIndex = 1;
             this.isbn.Text = "Transaction ID";
             // 
             // txt_id
             // 
             this.txt_id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_id.Location = new System.Drawing.Point(160, 56);
+            this.txt_id.Location = new System.Drawing.Point(160, 58);
             this.txt_id.Margin = new System.Windows.Forms.Padding(4);
             this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(205, 35);
+            this.txt_id.Size = new System.Drawing.Size(205, 29);
             this.txt_id.TabIndex = 2;
             // 
             // btnShow
@@ -137,29 +137,29 @@
             // txtTitle
             // 
             this.txtTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTitle.Location = new System.Drawing.Point(494, 56);
+            this.txtTitle.Location = new System.Drawing.Point(494, 58);
             this.txtTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(205, 35);
+            this.txtTitle.Size = new System.Drawing.Size(205, 29);
             this.txtTitle.TabIndex = 10;
             // 
             // txt_reader_name
             // 
             this.txt_reader_name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_reader_name.Location = new System.Drawing.Point(850, 56);
+            this.txt_reader_name.Location = new System.Drawing.Point(850, 58);
             this.txt_reader_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_reader_name.Name = "txt_reader_name";
-            this.txt_reader_name.Size = new System.Drawing.Size(205, 35);
+            this.txt_reader_name.Size = new System.Drawing.Size(205, 29);
             this.txt_reader_name.TabIndex = 11;
             // 
             // lbTitle
             // 
             this.lbTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbTitle.AutoSize = true;
-            this.lbTitle.Location = new System.Drawing.Point(393, 52);
+            this.lbTitle.Location = new System.Drawing.Point(382, 62);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(73, 42);
+            this.lbTitle.Size = new System.Drawing.Size(94, 22);
             this.lbTitle.TabIndex = 12;
             this.lbTitle.Text = "Book Title";
             // 
@@ -167,10 +167,10 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(726, 52);
+            this.label3.Location = new System.Drawing.Point(710, 62);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 42);
+            this.label3.Size = new System.Drawing.Size(128, 22);
             this.label3.TabIndex = 13;
             this.label3.Text = "Reader Name";
             // 
@@ -266,13 +266,14 @@
             // 
             // ReturnBookcs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "ReturnBookcs";
             this.Size = new System.Drawing.Size(1191, 536);
+            this.Load += new System.EventHandler(this.ReturnBookcs_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBorrow)).EndInit();

@@ -109,10 +109,10 @@
             // txtID
             // 
             this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtID.Location = new System.Drawing.Point(196, 411);
+            this.txtID.Location = new System.Drawing.Point(196, 413);
             this.txtID.Margin = new System.Windows.Forms.Padding(6);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(368, 30);
+            this.txtID.Size = new System.Drawing.Size(368, 26);
             this.txtID.TabIndex = 32;
             // 
             // dataGridViewBorrow
@@ -211,10 +211,10 @@
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(229, 23);
+            this.label1.Location = new System.Drawing.Point(203, 23);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(268, 51);
+            this.label1.Size = new System.Drawing.Size(174, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Borrow Books";
             // 
@@ -233,20 +233,20 @@
             // txtReaderName
             // 
             this.txtReaderName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReaderName.Location = new System.Drawing.Point(946, 82);
+            this.txtReaderName.Location = new System.Drawing.Point(946, 84);
             this.txtReaderName.Margin = new System.Windows.Forms.Padding(6);
             this.txtReaderName.Name = "txtReaderName";
-            this.txtReaderName.Size = new System.Drawing.Size(368, 30);
+            this.txtReaderName.Size = new System.Drawing.Size(368, 26);
             this.txtReaderName.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(784, 85);
+            this.label3.Location = new System.Drawing.Point(797, 88);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 23);
+            this.label3.Size = new System.Drawing.Size(106, 18);
             this.label3.TabIndex = 13;
             this.label3.Text = "Reader Name";
             // 
@@ -359,10 +359,10 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 414);
+            this.label2.Location = new System.Drawing.Point(59, 417);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 23);
+            this.label2.Size = new System.Drawing.Size(81, 18);
             this.label2.TabIndex = 30;
             this.label2.Text = "Borrow ID:";
             // 
@@ -370,20 +370,20 @@
             // 
             this.BookName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BookName.AutoSize = true;
-            this.BookName.Location = new System.Drawing.Point(44, 85);
+            this.BookName.Location = new System.Drawing.Point(54, 88);
             this.BookName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.BookName.Name = "BookName";
-            this.BookName.Size = new System.Drawing.Size(112, 23);
+            this.BookName.Size = new System.Drawing.Size(91, 18);
             this.BookName.TabIndex = 1;
             this.BookName.Text = "Book Name";
             // 
             // txtBookName
             // 
             this.txtBookName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBookName.Location = new System.Drawing.Point(196, 82);
+            this.txtBookName.Location = new System.Drawing.Point(196, 84);
             this.txtBookName.Margin = new System.Windows.Forms.Padding(6);
             this.txtBookName.Name = "txtBookName";
-            this.txtBookName.Size = new System.Drawing.Size(368, 30);
+            this.txtBookName.Size = new System.Drawing.Size(368, 26);
             this.txtBookName.TabIndex = 31;
             // 
             // btnDelete
@@ -401,13 +401,14 @@
             // 
             // UserControlBorrow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControlBorrow";
             this.Size = new System.Drawing.Size(1511, 794);
+            this.Load += new System.EventHandler(this.UserControlBorrow_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBorrow)).EndInit();

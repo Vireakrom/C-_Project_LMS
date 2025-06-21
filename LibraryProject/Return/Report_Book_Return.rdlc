@@ -43,30 +43,30 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.26042in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.30559in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.06732in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.19792in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.07292in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.29167in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -78,22 +78,30 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Transaction ID</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox16</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>#cccccc</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
+                        <BackgroundColor>#007acc</BackgroundColor>
+                        <PaddingLeft>4pt</PaddingLeft>
+                        <PaddingRight>4pt</PaddingRight>
+                        <PaddingTop>4pt</PaddingTop>
+                        <PaddingBottom>4pt</PaddingBottom>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -108,22 +116,30 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Reader Name</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox15</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>#cccccc</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
+                        <BackgroundColor>#007acc</BackgroundColor>
+                        <PaddingLeft>4pt</PaddingLeft>
+                        <PaddingRight>4pt</PaddingRight>
+                        <PaddingTop>4pt</PaddingTop>
+                        <PaddingBottom>4pt</PaddingBottom>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -138,22 +154,30 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Reader ID</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>#cccccc</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
+                        <BackgroundColor>#007acc</BackgroundColor>
+                        <PaddingLeft>4pt</PaddingLeft>
+                        <PaddingRight>4pt</PaddingRight>
+                        <PaddingTop>4pt</PaddingTop>
+                        <PaddingBottom>4pt</PaddingBottom>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -168,22 +192,30 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Book Title</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox13</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>#cccccc</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
+                        <BackgroundColor>#007acc</BackgroundColor>
+                        <PaddingLeft>4pt</PaddingLeft>
+                        <PaddingRight>4pt</PaddingRight>
+                        <PaddingTop>4pt</PaddingTop>
+                        <PaddingBottom>4pt</PaddingBottom>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -198,22 +230,30 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Book ID</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox18</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>#cccccc</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
+                        <BackgroundColor>#007acc</BackgroundColor>
+                        <PaddingLeft>4pt</PaddingLeft>
+                        <PaddingRight>4pt</PaddingRight>
+                        <PaddingTop>4pt</PaddingTop>
+                        <PaddingBottom>4pt</PaddingBottom>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -228,22 +268,30 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Borrow Date</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox20</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>#cccccc</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
+                        <BackgroundColor>#007acc</BackgroundColor>
+                        <PaddingLeft>4pt</PaddingLeft>
+                        <PaddingRight>4pt</PaddingRight>
+                        <PaddingTop>4pt</PaddingTop>
+                        <PaddingBottom>4pt</PaddingBottom>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -258,22 +306,30 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Return Date</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox22</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>#cccccc</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
+                        <BackgroundColor>#007acc</BackgroundColor>
+                        <PaddingLeft>4pt</PaddingLeft>
+                        <PaddingRight>4pt</PaddingRight>
+                        <PaddingTop>4pt</PaddingTop>
+                        <PaddingBottom>4pt</PaddingBottom>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -293,7 +349,12 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TransactionID.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <Color>#222222</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -305,6 +366,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "White", "#F3F3F3")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -323,7 +385,12 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!FullName.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <Color>#222222</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -335,6 +402,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "White", "#F3F3F3")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -353,7 +421,12 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ReaderID.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <Color>#222222</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -365,6 +438,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "White", "#F3F3F3")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -383,7 +457,12 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Title.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <Color>#222222</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -395,6 +474,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "White", "#F3F3F3")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -413,7 +493,12 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!BookID.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <Color>#222222</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -425,6 +510,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "White", "#F3F3F3")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -443,7 +529,12 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!BorrowDate.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <Color>#222222</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -455,6 +546,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "White", "#F3F3F3")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -473,7 +565,12 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ReturnDate.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <Color>#222222</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -485,6 +582,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=IIf(RowNumber(Nothing) Mod 2 = 0, "White", "#F3F3F3")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -519,10 +617,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSetReturnHistrory</DataSetName>
-        <Top>1.67167in</Top>
-        <Left>0.74232in</Left>
-        <Height>0.5in</Height>
-        <Width>7in</Width>
+        <Top>1.52584in</Top>
+        <Left>0.125in</Left>
+        <Height>0.54167in</Height>
+        <Width>7.90416in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -534,7 +632,7 @@
     <Height>3.175in</Height>
     <Style />
   </Body>
-  <Width>8.74999in</Width>
+  <Width>8.17291in</Width>
   <Page>
     <PageFooter>
       <Height>0.48333in</Height>
@@ -586,7 +684,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox29</rd:DefaultName>
           <Top>0.06944in</Top>
-          <Left>6.30833in</Left>
+          <Left>7.02916in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>1</ZIndex>
@@ -607,10 +705,12 @@
         </Border>
       </Style>
     </PageFooter>
-    <LeftMargin>1in</LeftMargin>
-    <RightMargin>1in</RightMargin>
-    <TopMargin>1in</TopMargin>
-    <BottomMargin>1in</BottomMargin>
+    <PageHeight>11.69in</PageHeight>
+    <PageWidth>25cm</PageWidth>
+    <LeftMargin>0.5in</LeftMargin>
+    <RightMargin>0.5in</RightMargin>
+    <TopMargin>0.5in</TopMargin>
+    <BottomMargin>0.5in</BottomMargin>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>

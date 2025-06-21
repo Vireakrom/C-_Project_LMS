@@ -143,10 +143,10 @@
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(153, 13);
+            this.label1.Location = new System.Drawing.Point(134, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 51);
+            this.label1.Size = new System.Drawing.Size(104, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Readers";
             // 
@@ -154,20 +154,20 @@
             // 
             this.isbn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.isbn.AutoSize = true;
-            this.isbn.Location = new System.Drawing.Point(39, 61);
+            this.isbn.Location = new System.Drawing.Point(45, 64);
             this.isbn.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.isbn.Name = "isbn";
-            this.isbn.Size = new System.Drawing.Size(61, 23);
+            this.isbn.Size = new System.Drawing.Size(50, 18);
             this.isbn.TabIndex = 1;
             this.isbn.Text = "Name";
             // 
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(136, 58);
+            this.txtName.Location = new System.Drawing.Point(136, 60);
             this.txtName.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(221, 30);
+            this.txtName.Size = new System.Drawing.Size(221, 26);
             this.txtName.TabIndex = 2;
             // 
             // btnShow
@@ -185,29 +185,29 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmail.Location = new System.Drawing.Point(489, 58);
+            this.txtEmail.Location = new System.Drawing.Point(489, 60);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(221, 30);
+            this.txtEmail.Size = new System.Drawing.Size(221, 26);
             this.txtEmail.TabIndex = 10;
             // 
             // txtPhone
             // 
             this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPhone.Location = new System.Drawing.Point(842, 58);
+            this.txtPhone.Location = new System.Drawing.Point(842, 60);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(221, 30);
+            this.txtPhone.Size = new System.Drawing.Size(221, 26);
             this.txtPhone.TabIndex = 11;
             // 
             // lbTitle
             // 
             this.lbTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbTitle.AutoSize = true;
-            this.lbTitle.Location = new System.Drawing.Point(394, 61);
+            this.lbTitle.Location = new System.Drawing.Point(399, 64);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(58, 23);
+            this.lbTitle.Size = new System.Drawing.Size(48, 18);
             this.lbTitle.TabIndex = 12;
             this.lbTitle.Text = "Email";
             // 
@@ -215,10 +215,10 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(743, 61);
+            this.label3.Location = new System.Drawing.Point(749, 64);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 23);
+            this.label3.Size = new System.Drawing.Size(53, 18);
             this.label3.TabIndex = 13;
             this.label3.Text = "Phone";
             // 
@@ -296,13 +296,14 @@
             // 
             // Reader
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Reader";
             this.Size = new System.Drawing.Size(1199, 597);
+            this.Load += new System.EventHandler(this.Reader_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReader)).EndInit();

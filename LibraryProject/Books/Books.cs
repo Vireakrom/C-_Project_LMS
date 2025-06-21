@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryProject.Main;
 
-
 namespace LibraryProject.Books
 {
     public partial class Books : UserControl
@@ -25,6 +24,7 @@ namespace LibraryProject.Books
         public Books()
         {
             InitializeComponent();
+            dataGridViewBook.DataBindingComplete += DataGridViewBook_DataBindingComplete;
         }
 
         private void BtnShow_Click(object sender, EventArgs e)
@@ -110,7 +110,64 @@ namespace LibraryProject.Books
 
         private void Books_Load(object sender, EventArgs e)
         {
+            using (var conn = Database.getConnection())
+            {
+                try
+                {
+                    conn.Open();
 
+                    var conditions = new List<string>();
+                    string sql = "SELECT * FROM Books WHERE 1=1";
+
+                    cmd.Parameters.Clear();
+
+
+                    conditions.Add("AvailableQuantity > 0");
+
+
+
+                    sql += " AND " + string.Join(" AND ", conditions) + " ORDER BY Title";
+                    cmd.CommandText = sql;
+                    cmd.Connection = conn;
+                    da = new SqlDataAdapter(cmd);
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    dv = ds.Tables[0].DefaultView;
+                    dataGridViewBook.DataSource = dv;
+
+                    dataGridViewBook.Columns["BookID"].Visible = false;
+                    // Change column headers
+                    if (dataGridViewBook.Columns.Contains("Title"))
+                        dataGridViewBook.Columns["Title"].HeaderText = "Book Title";
+
+                    if (dataGridViewBook.Columns.Contains("Author"))
+                        dataGridViewBook.Columns["Author"].HeaderText = "Author Name";
+
+                    if (dataGridViewBook.Columns.Contains("ISBN"))
+                        dataGridViewBook.Columns["ISBN"].HeaderText = "ISBN Code";
+
+                    if (dataGridViewBook.Columns.Contains("AvailableQuantity"))
+                        dataGridViewBook.Columns["AvailableQuantity"].HeaderText = "In Stock";
+
+
+
+                    dataGridViewBook.ClearSelection();
+
+                    conn.Close();
+
+
+                    if (dv.Count == 0)
+                        MessageBox.Show("No results found.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -350,6 +407,11 @@ namespace LibraryProject.Books
 
             FormReport reportForm = new FormReport(table);
             reportForm.ShowDialog();
+        }
+
+        private void DataGridViewBook_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridViewBook.ClearSelection();
         }
 
         private void LbTitle_Click(object sender, EventArgs e)

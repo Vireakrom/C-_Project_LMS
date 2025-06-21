@@ -22,6 +22,7 @@ namespace LibraryProject.Reader
         public Reader()
         {
             InitializeComponent();
+            dataGridViewReader.DataBindingComplete += DataGridViewReader_DataBindingComplete;
         }
 
         private void BtnShow_Click(object sender, EventArgs e)
@@ -185,6 +186,7 @@ namespace LibraryProject.Reader
                                     {
                                         clearFields();
                                         MessageBox.Show("New reader added successfully.");
+                                        BtnShow_Click(null, null);
                                     }
                                     else
                                         MessageBox.Show("Failed to add new reader.");
@@ -318,5 +320,92 @@ namespace LibraryProject.Reader
                 FormReportReader reportForm = new FormReportReader(table);
                 reportForm.ShowDialog();
             }
+
+        private void Reader_Load(object sender, EventArgs e)
+        {
+            using (var conn = Database.getConnection())
+            {
+                try
+                {
+                    conn.Open();
+
+                    var conditions = new List<string>();
+                    string sql = "SELECT * FROM Readers WHERE 1=1";
+
+                    cmd.Parameters.Clear();
+
+                    if (!string.IsNullOrWhiteSpace(txtName.Text))
+                    {
+                        string nameText = $"%{txtName.Text.Trim()}%";
+                        conditions.Add("FullName LIKE @FullName COLLATE SQL_Latin1_General_CP1_CI_AS");
+                        cmd.Parameters.AddWithValue("@Fullname", nameText);
+                    }
+                    if (!string.IsNullOrWhiteSpace(txtEmail.Text))
+                    {
+                        string nameText = $"%{txtEmail.Text.Trim()}%";
+                        conditions.Add("Email LIKE @Email COLLATE SQL_Latin1_General_CP1_CI_AS");
+                        cmd.Parameters.AddWithValue("@Email", nameText);
+                    }
+                    if (!string.IsNullOrWhiteSpace(txtPhone.Text))
+                    {
+                        string nameText = $"%{txtPhone.Text.Trim()}%";
+                        conditions.Add("Phone LIKE @Phone COLLATE SQL_Latin1_General_CP1_CI_AS");
+                        cmd.Parameters.AddWithValue("@Phone", nameText);
+                    }
+
+
+                    conditions.Add("isActive = 1");
+
+
+
+                    sql += " AND " + string.Join(" AND ", conditions) + " ORDER BY FullName";
+                    cmd.CommandText = sql;
+                    cmd.Connection = conn;
+                    da = new SqlDataAdapter(cmd);
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    dv = ds.Tables[0].DefaultView;
+                    dataGridViewReader.DataSource = dv;
+
+                    dataGridViewReader.Columns["ReaderID"].Visible = false;
+                    dataGridViewReader.Columns["isActive"].Visible = false;
+                    // Change column headers
+                    if (dataGridViewReader.Columns.Contains("FullName"))
+                        dataGridViewReader.Columns["FullName"].HeaderText = "Full Name";
+
+                    if (dataGridViewReader.Columns.Contains("Email"))
+                        dataGridViewReader.Columns["Email"].HeaderText = "Email";
+
+                    if (dataGridViewReader.Columns.Contains("Phone"))
+                        dataGridViewReader.Columns["Phone"].HeaderText = "Phone";
+
+                    if (dataGridViewReader.Columns.Contains("RegisterDate"))
+                        dataGridViewReader.Columns["RegisterDate"].HeaderText = "Register Date";
+
+
+
+                    dataGridViewReader.ClearSelection();
+
+                    conn.Close();
+
+
+                    if (dv.Count == 0)
+                        MessageBox.Show("No results found.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        private void DataGridViewReader_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridViewReader.ClearSelection();
+        }
     }
 }

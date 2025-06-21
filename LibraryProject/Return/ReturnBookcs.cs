@@ -23,6 +23,11 @@ namespace LibraryProject.Return
         public ReturnBookcs()
         {
             InitializeComponent();
+            dataGridViewBorrow.DataBindingComplete += DataGridViewBorrow_DataBindingComplete;
+        }
+        private void DataGridViewBorrow_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridViewBorrow.ClearSelection();
         }
 
         private void BtnShow_Click(object sender, EventArgs e)
@@ -255,6 +260,94 @@ namespace LibraryProject.Return
                     FormReportReturn reportForm = new FormReportReturn(dt);
                     reportForm.ShowDialog();
                 
+            }
+        }
+
+        private void ReturnBookcs_Load(object sender, EventArgs e)
+        {
+            using (var conn = Database.getConnection())
+            {
+                try
+                {
+                    conn.Open();
+
+                    var cmd = new SqlCommand();
+                    var conditions = new List<string>();
+                    string sql = @"
+                SELECT 
+                    t.TransactionID,
+                    r.FullName AS ReaderName,
+                    r.Email AS ReaderEmail,
+                    b.Title AS BookTitle,
+                    b.ISBN AS BookISBN,
+                    t.BorrowDate,
+                    t.DueDate
+
+                FROM Transactions t
+                INNER JOIN Readers r ON t.ReaderID = r.ReaderID
+                INNER JOIN Books b ON t.BookID = b.BookID
+                WHERE 1=1
+            ";
+
+
+
+                    // Always show not returned
+                    conditions.Add("t.isReturn = 0");
+
+                    // Add conditions to SQL
+                    if (conditions.Count > 0)
+                        sql += " AND " + string.Join(" AND ", conditions);
+
+                    sql += " ORDER BY t.TransactionID";
+
+                    cmd.CommandText = sql;
+                    cmd.Connection = conn;
+
+                    da = new SqlDataAdapter(cmd);
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    dv = ds.Tables[0].DefaultView;
+                    dataGridViewBorrow.DataSource = dv;
+
+
+                    // Optional: set headers
+                    if (dataGridViewBorrow.Columns.Contains("TransactionID"))
+                        dataGridViewBorrow.Columns["TransactionID"].HeaderText = "Transaction ID";
+
+                    if (dataGridViewBorrow.Columns.Contains("ReaderName"))
+                        dataGridViewBorrow.Columns["ReaderName"].HeaderText = "Reader Name";
+
+                    if (dataGridViewBorrow.Columns.Contains("ReaderEmail"))
+                        dataGridViewBorrow.Columns["ReaderEmail"].HeaderText = "Reader Email";
+
+                    if (dataGridViewBorrow.Columns.Contains("BookTitle"))
+                        dataGridViewBorrow.Columns["BookTitle"].HeaderText = "Book Title";
+
+                    if (dataGridViewBorrow.Columns.Contains("BookISBN"))
+                        dataGridViewBorrow.Columns["BookISBN"].HeaderText = "Book ISBN";
+
+                    if (dataGridViewBorrow.Columns.Contains("BorrowDate"))
+                        dataGridViewBorrow.Columns["BorrowDate"].HeaderText = "Borrow Date";
+
+                    if (dataGridViewBorrow.Columns.Contains("DueDate"))
+                        dataGridViewBorrow.Columns["DueDate"].HeaderText = "Due Date";
+                    if (dataGridViewBorrow.Columns.Contains("BookISBN"))
+
+
+
+                        dataGridViewBorrow.ClearSelection();
+
+                    if (ds.Tables[0].Rows.Count == 0)
+                        MessageBox.Show("No results found.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Search failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
         }
     }
