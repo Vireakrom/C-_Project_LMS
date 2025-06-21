@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBoard));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -177,6 +178,8 @@
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tableLayoutPanel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel4.BackgroundImage")));
+            this.tableLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -192,11 +195,12 @@
             // 
             // lbTotalReaders
             // 
-            this.lbTotalReaders.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbTotalReaders.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbTotalReaders.AutoSize = true;
+            this.lbTotalReaders.BackColor = System.Drawing.Color.Transparent;
             this.lbTotalReaders.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold);
             this.lbTotalReaders.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lbTotalReaders.Location = new System.Drawing.Point(185, 143);
+            this.lbTotalReaders.Location = new System.Drawing.Point(185, 1);
             this.lbTotalReaders.Name = "lbTotalReaders";
             this.lbTotalReaders.Size = new System.Drawing.Size(168, 31);
             this.lbTotalReaders.TabIndex = 0;
@@ -217,7 +221,9 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel3.BackgroundImage")));
+            this.tableLayoutPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -233,11 +239,11 @@
             // 
             // lbTotalBooks
             // 
-            this.lbTotalBooks.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbTotalBooks.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbTotalBooks.AutoSize = true;
             this.lbTotalBooks.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotalBooks.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lbTotalBooks.Location = new System.Drawing.Point(193, 143);
+            this.lbTotalBooks.Location = new System.Drawing.Point(193, 1);
             this.lbTotalBooks.Name = "lbTotalBooks";
             this.lbTotalBooks.Size = new System.Drawing.Size(151, 31);
             this.lbTotalBooks.TabIndex = 0;

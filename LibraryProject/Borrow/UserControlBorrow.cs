@@ -300,8 +300,9 @@ if (e.RowIndex >= 0)
                     string sql = @"
                 SELECT 
                     t.TransactionID,
-                    r.FullName AS ReaderName,
-                    b.Title AS BookTitle,
+                    t.ReaderID,
+                    r.FullName ,
+                    b.Title ,
                     t.BorrowDate,
                     t.DueDate
 
@@ -334,19 +335,21 @@ if (e.RowIndex >= 0)
                      da = new SqlDataAdapter(cmd);
                      ds = new DataSet();
                      da.Fill(ds);
-                    dv = ds.Tables[0].DefaultView;
-                    dataGridViewBorrow.DataSource = dv;
+                     dv = ds.Tables[0].DefaultView;
+                     dataGridViewBorrow.DataSource = dv;
 
 
                     // Optional: set headers
                     if (dataGridViewBorrow.Columns.Contains("TransactionID"))
                         dataGridViewBorrow.Columns["TransactionID"].HeaderText = "Transaction ID";
+                    if (dataGridViewBorrow.Columns.Contains("ReaderID"))
+                        dataGridViewBorrow.Columns["ReaderID"].HeaderText = "Reader ID";
 
-                    if (dataGridViewBorrow.Columns.Contains("ReaderName"))
-                        dataGridViewBorrow.Columns["ReaderName"].HeaderText = "Reader Name";
+                    if (dataGridViewBorrow.Columns.Contains("FullName"))
+                        dataGridViewBorrow.Columns["FullName"].HeaderText = "Reader Name";
 
-                    if (dataGridViewBorrow  .Columns.Contains("BookTitle"))
-                        dataGridViewBorrow.Columns["BookTitle"].HeaderText = "Book Title";
+                    if (dataGridViewBorrow  .Columns.Contains("Title"))
+                        dataGridViewBorrow.Columns["Title"].HeaderText = "Book Title";
 
                     if (dataGridViewBorrow.Columns.Contains("BorrowDate"))
                         dataGridViewBorrow.Columns["BorrowDate"].HeaderText = "Borrow Date";
@@ -381,37 +384,17 @@ if (e.RowIndex >= 0)
 
         private void BtnReport_Click(object sender, EventArgs e)
         {
-            using (var conn = Database.getConnection())
+            DataTable dt = GetDataTableFromDataGridView(dataGridViewBorrow);
+            if (dt.Rows.Count == 0)
             {
-                conn.Open();
-
-                string sql = @"
-                SELECT 
-                    t.TransactionID,
-                    r.FullName AS FullName,
-                    b.Title AS Title,
-                    t.BorrowDate,
-                    t.DueDate
-                FROM Transactions t
-                INNER JOIN Readers r ON t.ReaderID = r.ReaderID
-                INNER JOIN Books b ON t.BookID = b.BookID
-                WHERE t.isReturn = 0
-            ";
-
-                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                if (dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("No data to generate report.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                else
-                {
-                    // Open the report form and pass the data
-                    FormReportBorrow reportForm = new FormReportBorrow(dt);
-                    reportForm.ShowDialog();
-                }
+                MessageBox.Show("No data to generate report.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                // Open the report form and pass the data
+                FormReportBorrow reportForm = new FormReportBorrow(dt);
+                reportForm.ShowDialog();
             }
         }
 
@@ -638,10 +621,11 @@ if (e.RowIndex >= 0)
                     var cmd = new SqlCommand();
                     var conditions = new List<string>();
                     string sql = @"
-                SELECT 
+               SELECT 
                     t.TransactionID,
-                    r.FullName AS ReaderName,
-                    b.Title AS BookTitle,
+                    t.ReaderID,
+                    r.FullName ,
+                    b.Title ,
                     t.BorrowDate,
                     t.DueDate
 
@@ -674,12 +658,14 @@ if (e.RowIndex >= 0)
                     // Optional: set headers
                     if (dataGridViewBorrow.Columns.Contains("TransactionID"))
                         dataGridViewBorrow.Columns["TransactionID"].HeaderText = "Transaction ID";
+                    if (dataGridViewBorrow.Columns.Contains("ReaderID"))
+                        dataGridViewBorrow.Columns["ReaderID"].HeaderText = "Reader ID";
 
-                    if (dataGridViewBorrow.Columns.Contains("ReaderName"))
-                        dataGridViewBorrow.Columns["ReaderName"].HeaderText = "Reader Name";
+                    if (dataGridViewBorrow.Columns.Contains("FullName"))
+                        dataGridViewBorrow.Columns["FullName"].HeaderText = "Reader Name";
 
-                    if (dataGridViewBorrow.Columns.Contains("BookTitle"))
-                        dataGridViewBorrow.Columns["BookTitle"].HeaderText = "Book Title";
+                    if (dataGridViewBorrow.Columns.Contains("Title"))
+                        dataGridViewBorrow.Columns["Title"].HeaderText = "Book Title";
 
                     if (dataGridViewBorrow.Columns.Contains("BorrowDate"))
                         dataGridViewBorrow.Columns["BorrowDate"].HeaderText = "Borrow Date";
@@ -718,6 +704,33 @@ if (e.RowIndex >= 0)
         private void DataGridViewBorrow_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dataGridViewBorrow.ClearSelection();
+        }
+
+        private DataTable GetDataTableFromDataGridView(DataGridView dgv)
+        {
+            var dt = new DataTable();
+
+            // Use column.Name to match the RDLC dataset
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                if (column.Visible)
+                    dt.Columns.Add(column.Name, typeof(string));
+            }
+
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    var cellValues = new List<object>();
+                    foreach (DataGridViewColumn column in dgv.Columns)
+                    {
+                        if (column.Visible)
+                            cellValues.Add(row.Cells[column.Index].Value?.ToString() ?? "");
+                    }
+                    dt.Rows.Add(cellValues.ToArray());
+                }
+            }
+            return dt;
         }
     }
 }

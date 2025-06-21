@@ -24,7 +24,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
         <Top>0.4416in</Top>
-        <Left>2.97917in</Left>
+        <Left>2.3318in</Left>
         <Height>0.45833in</Height>
         <Width>1.64708in</Width>
         <Style>
@@ -578,9 +578,9 @@
         </TablixRowHierarchy>
         <DataSetName>DataSetTransaction</DataSetName>
         <Top>1.10292in</Top>
-        <Left>0.63815in</Left>
+        <Left>0.16315in</Left>
         <Height>0.5in</Height>
-        <Width>5.9881in</Width>
+        <Width>5.98809in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -592,7 +592,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>7.62625in</Width>
+  <Width>6.30958in</Width>
   <Page>
     <PageFooter>
       <Height>0.38542in</Height>
@@ -615,7 +615,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox28</rd:DefaultName>
           <Top>0.06944in</Top>
-          <Left>0.63815in</Left>
+          <Left>0.16315in</Left>
           <Height>0.25in</Height>
           <Width>1.51042in</Width>
           <Style>
@@ -644,7 +644,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox29</rd:DefaultName>
           <Top>0.06944in</Top>
-          <Left>5.62625in</Left>
+          <Left>5.15124in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>1</ZIndex>
