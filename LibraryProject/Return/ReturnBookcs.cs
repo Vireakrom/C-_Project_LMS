@@ -232,35 +232,12 @@ namespace LibraryProject.Return
 
         private void BtnReport_Click(object sender, EventArgs e)
         {
-            using (var conn = Database.getConnection())
-            {
-                conn.Open();
 
-                string sql = @"
-                SELECT 
-                    t.TransactionID,
-                    r.FullName AS FullName,
-                    r.Email AS Email,
-                    b.Title AS Title,
-                    b.ISBN AS ISBN,
-                    t.BorrowDate,
-                    t.ReturnDate,
-                    t.DueDate
-                FROM Transactions t
-                INNER JOIN Readers r ON t.ReaderID = r.ReaderID
-                INNER JOIN Books b ON t.BookID = b.BookID
-                WHERE t.isReturn = 1
-            ";
-
-                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
 
                     // Open the report form and pass the data
-                    FormReportReturn reportForm = new FormReportReturn(dt);
+                    FormReportReturn reportForm = new FormReportReturn();
                     reportForm.ShowDialog();
-                
-            }
+
         }
 
         private void ReturnBookcs_Load(object sender, EventArgs e)

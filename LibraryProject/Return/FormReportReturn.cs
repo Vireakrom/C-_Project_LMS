@@ -14,7 +14,7 @@ namespace LibraryProject.Return
     public partial class FormReportReturn : Form
     {
         private DataTable _Return;
-        public FormReportReturn(DataTable data)
+        public FormReportReturn()
         {
             InitializeComponent();
             this.Load += FormReportReturn_Load;
@@ -23,17 +23,19 @@ namespace LibraryProject.Return
 
         private void FormReportReturn_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSet1.Transactions' table. You can move, or remove it, as needed.
-            this.transactionsTableAdapter.Fill(this.dataSet1.Transactions);
+
             // 1. Create and fill the DataSet
             var dataSet = new DataSet1(); // or DataSetBook, depending on your setup
             var adapter = new DataSet1TableAdapters.TransactionsTableAdapter();
             adapter.Fill(dataSet.Transactions); // This should now include ReaderName and BookTitle
 
             // 2. Set up the ReportDataSource
-            var transactionsTable = dataSet.Transactions as DataTable; // Explicitly cast to DataTable to resolve ambiguity
-            _Return = transactionsTable; // Store the data for later use in filtering
-            var rds = new ReportDataSource("DataSetReturnHistrory", transactionsTable);
+            var transactionsTable = dataSet.Transactions as DataTable;
+            DataView dv = new DataView(transactionsTable);
+            dv.RowFilter = "IsReturn = 1";
+            _Return = transactionsTable; // Keep the full table for later filtering/search
+
+            var rds = new ReportDataSource("DataSetReturnHistrory", dv.ToTable());
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(rds);
 
@@ -56,7 +58,7 @@ namespace LibraryProject.Return
                 filters.Add($"FullName LIKE '%{readerName.Replace("'", "''")}%'");
             if (!string.IsNullOrEmpty(bookTitle))
                 filters.Add($"Title LIKE '%{bookTitle.Replace("'", "''")}%'");
-
+            filters.Add("IsReturn = 1"); // Ensure we only show returned books
             string filterExpression = string.Join(" AND ", filters);
 
             // Filter the DataTable

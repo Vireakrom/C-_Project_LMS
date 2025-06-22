@@ -88,6 +88,9 @@
     <Compile Include="Dashboard\DashBoard.Designer.cs">
       <DependentUpon>DashBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard\RoundedLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSetBook.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -184,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard\DashBoard.resx">
       <DependentUpon>DashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
