@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.booksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +68,7 @@
             // 
             this.dashboardToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(140, 45);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(128, 32);
             this.dashboardToolStripMenuItem.Text = "Dashboard";
             this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.DashboardToolStripMenuItem_Click);
             // 
@@ -75,7 +76,7 @@
             // 
             this.booksToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.booksToolStripMenuItem.Name = "booksToolStripMenuItem";
-            this.booksToolStripMenuItem.Size = new System.Drawing.Size(88, 35);
+            this.booksToolStripMenuItem.Size = new System.Drawing.Size(83, 32);
             this.booksToolStripMenuItem.Text = "Books";
             this.booksToolStripMenuItem.Click += new System.EventHandler(this.BooksToolStripMenuItem_Click);
             // 
@@ -83,7 +84,7 @@
             // 
             this.readersToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.readersToolStripMenuItem.Name = "readersToolStripMenuItem";
-            this.readersToolStripMenuItem.Size = new System.Drawing.Size(109, 35);
+            this.readersToolStripMenuItem.Size = new System.Drawing.Size(101, 32);
             this.readersToolStripMenuItem.Text = "Readers";
             this.readersToolStripMenuItem.Click += new System.EventHandler(this.ReadersToolStripMenuItem_Click);
             // 
@@ -91,7 +92,7 @@
             // 
             this.borrowToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(100, 35);
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(95, 32);
             this.borrowToolStripMenuItem.Text = "Borrow";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.BorrowToolStripMenuItem_Click);
             // 
@@ -99,7 +100,7 @@
             // 
             this.returnToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.returnToolStripMenuItem.Name = "returnToolStripMenuItem";
-            this.returnToolStripMenuItem.Size = new System.Drawing.Size(95, 35);
+            this.returnToolStripMenuItem.Size = new System.Drawing.Size(90, 32);
             this.returnToolStripMenuItem.Text = "Return";
             this.returnToolStripMenuItem.Click += new System.EventHandler(this.ReturnToolStripMenuItem_Click);
             // 
@@ -173,10 +174,11 @@
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Library";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);

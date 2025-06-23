@@ -424,16 +424,6 @@
   </Body>
   <Width>16.89478cm</Width>
   <Page>
-    <PageHeader>
-      <Height>2.54cm</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
-      <PrintOnLastPage>true</PrintOnLastPage>
-      <Style>
-        <Border>
-          <Style>None</Style>
-        </Border>
-      </Style>
-    </PageHeader>
     <PageFooter>
       <Height>1.05834cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>

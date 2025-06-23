@@ -67,7 +67,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -81,7 +81,7 @@
             this.panel4.Controls.Add(this.tableLayoutPanel5);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(411, 265);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(404, 258);
             this.panel4.TabIndex = 2;
@@ -96,7 +96,7 @@
             this.tableLayoutPanel5.Controls.Add(this.lbTotalBookReturn, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -110,12 +110,12 @@
             this.lbTotalBookReturn.BackColor = System.Drawing.Color.White;
             this.lbTotalBookReturn.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold);
             this.lbTotalBookReturn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lbTotalBookReturn.Location = new System.Drawing.Point(106, 1);
+            this.lbTotalBookReturn.Location = new System.Drawing.Point(74, 1);
             this.lbTotalBookReturn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTotalBookReturn.Name = "lbTotalBookReturn";
-            this.lbTotalBookReturn.Size = new System.Drawing.Size(191, 25);
+            this.lbTotalBookReturn.Size = new System.Drawing.Size(255, 31);
             this.lbTotalBookReturn.TabIndex = 0;
-            this.lbTotalBookReturn.Text = "Total Books Return :";
+            this.lbTotalBookReturn.Text = "Total Books Returned :";
             // 
             // panel2
             // 
@@ -123,7 +123,7 @@
             this.panel2.Controls.Add(this.tableLayoutPanel2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 265);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(403, 258);
             this.panel2.TabIndex = 1;
@@ -140,7 +140,7 @@
             this.tableLayoutPanel2.Controls.Add(this.lbTotalBookBorrow, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -154,12 +154,12 @@
             this.lbTotalBookBorrow.BackColor = System.Drawing.Color.White;
             this.lbTotalBookBorrow.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold);
             this.lbTotalBookBorrow.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lbTotalBookBorrow.Location = new System.Drawing.Point(103, 1);
+            this.lbTotalBookBorrow.Location = new System.Drawing.Point(70, 1);
             this.lbTotalBookBorrow.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTotalBookBorrow.Name = "lbTotalBookBorrow";
-            this.lbTotalBookBorrow.Size = new System.Drawing.Size(197, 25);
+            this.lbTotalBookBorrow.Size = new System.Drawing.Size(262, 31);
             this.lbTotalBookBorrow.TabIndex = 2;
-            this.lbTotalBookBorrow.Text = "Total Books Borrow :";
+            this.lbTotalBookBorrow.Text = "Total Books Borrowed :";
             // 
             // panel3
             // 
@@ -167,7 +167,7 @@
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(411, 3);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(404, 257);
             this.panel3.TabIndex = 1;
@@ -177,7 +177,7 @@
             this.panel5.Controls.Add(this.tableLayoutPanel4);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(404, 257);
             this.panel5.TabIndex = 1;
@@ -193,7 +193,7 @@
             this.tableLayoutPanel4.Controls.Add(this.lbTotalReaders, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -207,10 +207,10 @@
             this.lbTotalReaders.BackColor = System.Drawing.Color.Transparent;
             this.lbTotalReaders.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold);
             this.lbTotalReaders.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lbTotalReaders.Location = new System.Drawing.Point(132, 1);
+            this.lbTotalReaders.Location = new System.Drawing.Point(118, 1);
             this.lbTotalReaders.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTotalReaders.Name = "lbTotalReaders";
-            this.lbTotalReaders.Size = new System.Drawing.Size(140, 25);
+            this.lbTotalReaders.Size = new System.Drawing.Size(168, 31);
             this.lbTotalReaders.TabIndex = 0;
             this.lbTotalReaders.Text = "Total Readers :";
             // 
@@ -221,7 +221,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(403, 257);
             this.panel1.TabIndex = 0;
@@ -238,7 +238,7 @@
             this.tableLayoutPanel3.Controls.Add(this.lbTotalBooks, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -251,10 +251,10 @@
             this.lbTotalBooks.AutoSize = true;
             this.lbTotalBooks.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotalBooks.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lbTotalBooks.Location = new System.Drawing.Point(139, 1);
+            this.lbTotalBooks.Location = new System.Drawing.Point(126, 1);
             this.lbTotalBooks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTotalBooks.Name = "lbTotalBooks";
-            this.lbTotalBooks.Size = new System.Drawing.Size(125, 25);
+            this.lbTotalBooks.Size = new System.Drawing.Size(151, 31);
             this.lbTotalBooks.TabIndex = 0;
             this.lbTotalBooks.Text = "Total Books :";
             // 
@@ -263,7 +263,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DashBoard";
             this.Size = new System.Drawing.Size(818, 526);
             this.tableLayoutPanel1.ResumeLayout(false);

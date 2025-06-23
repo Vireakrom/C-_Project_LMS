@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,16 +7,18 @@ using LibraryProject.Main;
 
 namespace LibraryProject.Dashboard
 {
-
     public partial class DashBoard : UserControl
     {
-        SqlCommand cmd = new SqlCommand();
-        SqlDataAdapter da = new SqlDataAdapter();
-        DataSet ds = new DataSet();
-
         public DashBoard()
         {
             InitializeComponent();
+
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.UpdateStyles();
+
+            EnableDoubleBuffering(this);
+
             getTotalBooks();
             getTotalReader();
             getTotalBookBorrow();
@@ -26,18 +27,17 @@ namespace LibraryProject.Dashboard
 
         private void Panel1_Paint(object sender, PaintEventArgs e)
         {
-
+            // You can remove this if not used
         }
 
         private void getTotalBooks()
         {
-            using(var conn = Database.getConnection())
+            using (var conn = Database.getConnection())
+            using (var cmd = new SqlCommand("SELECT SUM(TotalQuantity) FROM Books WHERE TotalQuantity > 0", conn))
             {
                 try
                 {
                     conn.Open();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "SELECT COUNT(*) FROM Books WHERE TotalQuantity > 0";
                     int totalBooks = (int)cmd.ExecuteScalar();
                     lbTotalBooks.Text += totalBooks.ToString();
                 }
@@ -45,76 +45,73 @@ namespace LibraryProject.Dashboard
                 {
                     MessageBox.Show("Error fetching total books: " + ex.Message);
                 }
-                finally
-                {
-                    conn.Close();
-                }
             }
         }
+
         private void getTotalReader()
         {
             using (var conn = Database.getConnection())
+            using (var cmd = new SqlCommand("SELECT COUNT(*) FROM Readers WHERE isActive = 1", conn))
             {
                 try
                 {
                     conn.Open();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "SELECT COUNT(*) FROM Readers WHERE isActive = 1";
-                    int totalBooks = (int)cmd.ExecuteScalar();
-                    lbTotalReaders.Text += totalBooks.ToString();
+                    int totalReaders = (int)cmd.ExecuteScalar();
+                    lbTotalReaders.Text += totalReaders.ToString();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error fetching total books: " + ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
+                    MessageBox.Show("Error fetching total readers: " + ex.Message);
                 }
             }
         }
+
         private void getTotalBookBorrow()
         {
             using (var conn = Database.getConnection())
+            using (var cmd = new SqlCommand("SELECT COUNT(*) FROM Transactions", conn))
             {
                 try
                 {
                     conn.Open();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "SELECT COUNT(*) FROM Transactions";
-                    int totalBooks = (int)cmd.ExecuteScalar();
-                    lbTotalBookBorrow.Text += totalBooks.ToString();
+                    int totalBorrow = (int)cmd.ExecuteScalar();
+                    lbTotalBookBorrow.Text += totalBorrow.ToString();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error fetching total books: " + ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
+                    MessageBox.Show("Error fetching total borrowed books: " + ex.Message);
                 }
             }
         }
+
         private void getTotalBookReturn()
         {
             using (var conn = Database.getConnection())
+            using (var cmd = new SqlCommand("SELECT COUNT(*) FROM Transactions WHERE IsReturn = 1", conn))
             {
                 try
                 {
                     conn.Open();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "SELECT COUNT(*) FROM Transactions WHERE IsReturn = 1";
-                    int totalBooks = (int)cmd.ExecuteScalar();
-                    lbTotalBookReturn.Text += totalBooks.ToString();
+                    int totalReturn = (int)cmd.ExecuteScalar();
+                    lbTotalBookReturn.Text += totalReturn.ToString();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error fetching total books: " + ex.Message);
+                    MessageBox.Show("Error fetching total returned books: " + ex.Message);
                 }
-                finally
-                {
-                    conn.Close();
-                }
+            }
+        }
+
+        private void EnableDoubleBuffering(Control control)
+        {
+            var doubleBufferPropertyInfo = control.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            if (doubleBufferPropertyInfo != null)
+            {
+                doubleBufferPropertyInfo.SetValue(control, true, null);
+            }
+            foreach (Control child in control.Controls)
+            {
+                EnableDoubleBuffering(child);
             }
         }
     }
