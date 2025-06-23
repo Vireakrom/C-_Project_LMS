@@ -48,8 +48,9 @@
             this.ClientSize = new System.Drawing.Size(870, 453);
             this.Controls.Add(this.reportViewer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormReportReader";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormReportReader";
             this.Load += new System.EventHandler(this.FormReportReader_Load);
             this.ResumeLayout(false);
