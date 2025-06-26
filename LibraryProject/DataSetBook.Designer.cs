@@ -1080,6 +1080,10 @@ namespace LibraryProject {
             
             private global::System.Data.DataColumn columnTitle;
             
+            private global::System.Data.DataColumn columnQuantity;
+            
+            private global::System.Data.DataColumn columnIsRemoved;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public TransactionsDataTable() {
@@ -1187,6 +1191,22 @@ namespace LibraryProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn QuantityColumn {
+                get {
+                    return this.columnQuantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IsRemovedColumn {
+                get {
+                    return this.columnIsRemoved;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1222,7 +1242,7 @@ namespace LibraryProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TransactionsRow AddTransactionsRow(ReadersRow parentReadersRowByFK__Transacti__Reade__4D94879B, BooksRow parentBooksRowByFK__Transacti__BookI__4E88ABD4, System.DateTime BorrowDate, System.DateTime ReturnDate, bool IsReturn, System.DateTime DueDate, string FullName, string Title) {
+            public TransactionsRow AddTransactionsRow(ReadersRow parentReadersRowByFK__Transacti__Reade__4D94879B, BooksRow parentBooksRowByFK__Transacti__BookI__4E88ABD4, System.DateTime BorrowDate, System.DateTime ReturnDate, bool IsReturn, System.DateTime DueDate, string FullName, string Title, byte Quantity, bool IsRemoved) {
                 TransactionsRow rowTransactionsRow = ((TransactionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1233,7 +1253,9 @@ namespace LibraryProject {
                         IsReturn,
                         DueDate,
                         FullName,
-                        Title};
+                        Title,
+                        Quantity,
+                        IsRemoved};
                 if ((parentReadersRowByFK__Transacti__Reade__4D94879B != null)) {
                     columnValuesArray[1] = parentReadersRowByFK__Transacti__Reade__4D94879B[0];
                 }
@@ -1278,6 +1300,8 @@ namespace LibraryProject {
                 this.columnDueDate = base.Columns["DueDate"];
                 this.columnFullName = base.Columns["FullName"];
                 this.columnTitle = base.Columns["Title"];
+                this.columnQuantity = base.Columns["Quantity"];
+                this.columnIsRemoved = base.Columns["IsRemoved"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1301,6 +1325,10 @@ namespace LibraryProject {
                 base.Columns.Add(this.columnFullName);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTitle);
+                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantity);
+                this.columnIsRemoved = new global::System.Data.DataColumn("IsRemoved", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsRemoved);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnTransactionID}, true));
                 this.columnTransactionID.AutoIncrement = true;
@@ -1985,6 +2013,38 @@ namespace LibraryProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public byte Quantity {
+                get {
+                    try {
+                        return ((byte)(this[this.tableTransactions.QuantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Quantity\' in table \'Transactions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTransactions.QuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsRemoved {
+                get {
+                    try {
+                        return ((bool)(this[this.tableTransactions.IsRemovedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IsRemoved\' in table \'Transactions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTransactions.IsRemovedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public BooksRow BooksRow {
                 get {
                     return ((BooksRow)(this.GetParentRow(this.Table.ParentRelations["FK__Transacti__BookI__4E88ABD4"])));
@@ -2099,6 +2159,30 @@ namespace LibraryProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTitleNull() {
                 this[this.tableTransactions.TitleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsQuantityNull() {
+                return this.IsNull(this.tableTransactions.QuantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetQuantityNull() {
+                this[this.tableTransactions.QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIsRemovedNull() {
+                return this.IsNull(this.tableTransactions.IsRemovedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIsRemovedNull() {
+                this[this.tableTransactions.IsRemovedColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3323,6 +3407,8 @@ SELECT ReaderID, FullName, Email, Phone, RegisterDate, IsActive FROM Readers WHE
             tableMapping.ColumnMappings.Add("DueDate", "DueDate");
             tableMapping.ColumnMappings.Add("FullName", "FullName");
             tableMapping.ColumnMappings.Add("Title", "Title");
+            tableMapping.ColumnMappings.Add("Quantity", "Quantity");
+            tableMapping.ColumnMappings.Add("IsRemoved", "IsRemoved");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3347,7 +3433,7 @@ SELECT ReaderID, FullName, Email, Phone, RegisterDate, IsActive FROM Readers WHE
     t.ReturnDate,
     t.IsReturn,
     t.DueDate,
-    r.FullName,
+   t.Quantity, t.IsRemoved, r.FullName,
     b.Title FROM 
     Transactions t
     INNER JOIN Readers r ON t.ReaderID = r.ReaderID

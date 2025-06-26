@@ -52,6 +52,7 @@
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -69,6 +70,18 @@
     </Compile>
     <Compile Include="Books\Books.Designer.cs">
       <DependentUpon>Books.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Borrow\FormQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrow\FormQuantity.Designer.cs">
+      <DependentUpon>FormQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Borrow\FormRemovedBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrow\FormRemovedBook.Designer.cs">
+      <DependentUpon>FormRemovedBook.cs</DependentUpon>
     </Compile>
     <Compile Include="Borrow\FormReportBorrow.cs">
       <SubType>Form</SubType>
@@ -127,6 +140,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LibraryA4DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="LibraryA4DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraryA4DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reader\LibraryA4DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -178,9 +196,16 @@
     <EmbeddedResource Include="Books\FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Borrow\FormQuantity.resx">
+      <DependentUpon>FormQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borrow\FormRemovedBook.resx">
+      <DependentUpon>FormRemovedBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Borrow\FormReportBorrow.resx">
       <DependentUpon>FormReportBorrow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Borrow\Report1.rdlc" />
     <EmbeddedResource Include="Borrow\ReportBorrow.rdlc" />
     <EmbeddedResource Include="Borrow\UserControlBorrow.resx">
       <DependentUpon>UserControlBorrow.cs</DependentUpon>
@@ -253,6 +278,17 @@
     </None>
     <None Include="LibraryA4DataSet.xss">
       <DependentUpon>LibraryA4DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LibraryA4DataSet1.xsc">
+      <DependentUpon>LibraryA4DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="LibraryA4DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LibraryA4DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LibraryA4DataSet1.xss">
+      <DependentUpon>LibraryA4DataSet1.xsd</DependentUpon>
     </None>
     <None Include="Reader\LibraryA4DataSet1.xsc">
       <DependentUpon>LibraryA4DataSet1.xsd</DependentUpon>

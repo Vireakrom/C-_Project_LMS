@@ -1,4 +1,5 @@
 ﻿
+using System.Configuration;
 using System.Data.SqlClient;
 
 
@@ -8,11 +9,11 @@ namespace LibraryProject.Main
     {
         public static SqlConnection getConnection()
         {
-            string connectionString = "Server=ROMVIREAK\\LIBRARY;Database=LibraryA4;Integrated Security=True;";
+            // "LibraryDb" should match the name in your .config file
+            string connectionString = ConfigurationManager.ConnectionStrings["LibraryDB"].ConnectionString;
+            return new SqlConnection(connectionString);
 
-           return new SqlConnection(connectionString);
 
-            
         }
     }
 

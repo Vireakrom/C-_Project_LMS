@@ -55,6 +55,7 @@
             this.BookName = new System.Windows.Forms.Label();
             this.txtBookName = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnBookRemoved = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBorrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReader)).BeginInit();
@@ -89,7 +90,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.BookName, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtBookName, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnDelete, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnDelete, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnBookRemoved, 5, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(6);
@@ -103,16 +105,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1511, 794);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1529, 663);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // txtID
             // 
             this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtID.Location = new System.Drawing.Point(196, 413);
+            this.txtID.Location = new System.Drawing.Point(196, 347);
             this.txtID.Margin = new System.Windows.Forms.Padding(6);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(368, 26);
+            this.txtID.Size = new System.Drawing.Size(377, 26);
             this.txtID.TabIndex = 32;
             // 
             // dataGridViewBorrow
@@ -148,7 +150,7 @@
             this.dataGridViewBorrow.EnableHeadersVisualStyles = false;
             this.dataGridViewBorrow.GridColor = System.Drawing.Color.LightGray;
             this.dataGridViewBorrow.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dataGridViewBorrow.Location = new System.Drawing.Point(14, 459);
+            this.dataGridViewBorrow.Location = new System.Drawing.Point(14, 393);
             this.dataGridViewBorrow.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewBorrow.MultiSelect = false;
             this.dataGridViewBorrow.Name = "dataGridViewBorrow";
@@ -156,7 +158,7 @@
             this.dataGridViewBorrow.RowHeadersVisible = false;
             this.dataGridViewBorrow.RowHeadersWidth = 51;
             this.dataGridViewBorrow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBorrow.Size = new System.Drawing.Size(1482, 263);
+            this.dataGridViewBorrow.Size = new System.Drawing.Size(1500, 197);
             this.dataGridViewBorrow.TabIndex = 23;
             // 
             // dataGridViewReader
@@ -192,7 +194,7 @@
             this.dataGridViewReader.EnableHeadersVisualStyles = false;
             this.dataGridViewReader.GridColor = System.Drawing.Color.LightGray;
             this.dataGridViewReader.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dataGridViewReader.Location = new System.Drawing.Point(764, 130);
+            this.dataGridViewReader.Location = new System.Drawing.Point(773, 130);
             this.dataGridViewReader.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewReader.MultiSelect = false;
             this.dataGridViewReader.Name = "dataGridViewReader";
@@ -200,7 +202,7 @@
             this.dataGridViewReader.RowHeadersVisible = false;
             this.dataGridViewReader.RowHeadersWidth = 51;
             this.dataGridViewReader.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewReader.Size = new System.Drawing.Size(732, 263);
+            this.dataGridViewReader.Size = new System.Drawing.Size(741, 197);
             this.dataGridViewReader.TabIndex = 22;
             this.dataGridViewReader.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewReader_CellClick);
             // 
@@ -211,7 +213,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(203, 23);
+            this.label1.Location = new System.Drawing.Point(207, 23);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(174, 32);
@@ -221,7 +223,7 @@
             // btnShowBookAndReader
             // 
             this.btnShowBookAndReader.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnShowBookAndReader.Location = new System.Drawing.Point(1327, 75);
+            this.btnShowBookAndReader.Location = new System.Drawing.Point(1345, 75);
             this.btnShowBookAndReader.Margin = new System.Windows.Forms.Padding(6);
             this.btnShowBookAndReader.Name = "btnShowBookAndReader";
             this.btnShowBookAndReader.Size = new System.Drawing.Size(166, 44);
@@ -233,17 +235,17 @@
             // txtReaderName
             // 
             this.txtReaderName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReaderName.Location = new System.Drawing.Point(946, 84);
+            this.txtReaderName.Location = new System.Drawing.Point(955, 84);
             this.txtReaderName.Margin = new System.Windows.Forms.Padding(6);
             this.txtReaderName.Name = "txtReaderName";
-            this.txtReaderName.Size = new System.Drawing.Size(368, 26);
+            this.txtReaderName.Size = new System.Drawing.Size(377, 26);
             this.txtReaderName.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(797, 88);
+            this.label3.Location = new System.Drawing.Point(806, 88);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 18);
@@ -253,7 +255,7 @@
             // btnReport
             // 
             this.btnReport.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnReport.Location = new System.Drawing.Point(1327, 17);
+            this.btnReport.Location = new System.Drawing.Point(1345, 17);
             this.btnReport.Margin = new System.Windows.Forms.Padding(6);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(166, 44);
@@ -265,7 +267,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClose.Location = new System.Drawing.Point(1327, 733);
+            this.btnClose.Location = new System.Drawing.Point(1345, 601);
             this.btnClose.Margin = new System.Windows.Forms.Padding(6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(166, 44);
@@ -277,12 +279,12 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAdd.Location = new System.Drawing.Point(17, 733);
+            this.btnAdd.Location = new System.Drawing.Point(17, 601);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(6);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(166, 44);
             this.btnAdd.TabIndex = 14;
-            this.btnAdd.Text = "Confirm Borrow";
+            this.btnAdd.Text = "Borrow";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
@@ -327,14 +329,14 @@
             this.dataGridViewBook.RowHeadersVisible = false;
             this.dataGridViewBook.RowHeadersWidth = 51;
             this.dataGridViewBook.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBook.Size = new System.Drawing.Size(732, 263);
+            this.dataGridViewBook.Size = new System.Drawing.Size(741, 197);
             this.dataGridViewBook.TabIndex = 19;
             this.dataGridViewBook.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewBook_CellClick_1);
             // 
             // btnClear
             // 
             this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClear.Location = new System.Drawing.Point(1069, 17);
+            this.btnClear.Location = new System.Drawing.Point(1082, 17);
             this.btnClear.Margin = new System.Windows.Forms.Padding(6);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(122, 44);
@@ -346,7 +348,7 @@
             // buttonShowBorrow
             // 
             this.buttonShowBorrow.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonShowBorrow.Location = new System.Drawing.Point(1327, 404);
+            this.buttonShowBorrow.Location = new System.Drawing.Point(1345, 338);
             this.buttonShowBorrow.Margin = new System.Windows.Forms.Padding(6);
             this.buttonShowBorrow.Name = "buttonShowBorrow";
             this.buttonShowBorrow.Size = new System.Drawing.Size(166, 44);
@@ -359,7 +361,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(59, 417);
+            this.label2.Location = new System.Drawing.Point(59, 351);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 18);
@@ -383,14 +385,14 @@
             this.txtBookName.Location = new System.Drawing.Point(196, 84);
             this.txtBookName.Margin = new System.Windows.Forms.Padding(6);
             this.txtBookName.Name = "txtBookName";
-            this.txtBookName.Size = new System.Drawing.Size(368, 26);
+            this.txtBookName.Size = new System.Drawing.Size(377, 26);
             this.txtBookName.TabIndex = 31;
             // 
             // btnDelete
             // 
             this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.SetColumnSpan(this.btnDelete, 3);
-            this.btnDelete.Location = new System.Drawing.Point(672, 733);
+            this.tableLayoutPanel1.SetColumnSpan(this.btnDelete, 2);
+            this.btnDelete.Location = new System.Drawing.Point(391, 601);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(166, 44);
@@ -398,6 +400,19 @@
             this.btnDelete.Text = "Remove";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
+            // btnBookRemoved
+            // 
+            this.btnBookRemoved.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel1.SetColumnSpan(this.btnBookRemoved, 2);
+            this.btnBookRemoved.Location = new System.Drawing.Point(970, 600);
+            this.btnBookRemoved.Margin = new System.Windows.Forms.Padding(6);
+            this.btnBookRemoved.Name = "btnBookRemoved";
+            this.btnBookRemoved.Size = new System.Drawing.Size(166, 46);
+            this.btnBookRemoved.TabIndex = 33;
+            this.btnBookRemoved.Text = "Book Removed";
+            this.btnBookRemoved.UseVisualStyleBackColor = true;
+            this.btnBookRemoved.Click += new System.EventHandler(this.BtnBookRemoved_Click);
             // 
             // UserControlBorrow
             // 
@@ -407,7 +422,7 @@
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControlBorrow";
-            this.Size = new System.Drawing.Size(1511, 794);
+            this.Size = new System.Drawing.Size(1529, 663);
             this.Load += new System.EventHandler(this.UserControlBorrow_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -438,5 +453,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtBookName;
+        private System.Windows.Forms.Button btnBookRemoved;
     }
 }

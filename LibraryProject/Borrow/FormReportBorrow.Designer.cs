@@ -51,7 +51,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormReportBorrow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormReportBorrow";
+            this.Text = "Report Book Borrowed";
             this.Load += new System.EventHandler(this.FormReportBorrow_Load);
             this.ResumeLayout(false);
 

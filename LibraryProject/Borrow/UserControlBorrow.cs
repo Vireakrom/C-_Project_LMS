@@ -168,14 +168,22 @@ namespace LibraryProject.Borrow
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
+            
+           
 
-
-            if(dataGridViewBook.SelectedRows.Count == 0 || dataGridViewReader.SelectedRows.Count == 0)
+            if (dataGridViewBook.SelectedRows.Count == 0 || dataGridViewReader.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select a book and a reader.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            FormQuantity formQuantity = new FormQuantity(selectedBookTitle, selectedReaderName,bookAvailableQuantity);
+            formQuantity.ShowDialog();
+            if (formQuantity.DialogResult != DialogResult.OK)
+            {
+                // User cancelled the form
+                return;
+            }
+            int quantity = formQuantity.QuantityValue;
             using (var conn = Database.getConnection())
             {
                 try
@@ -204,8 +212,8 @@ namespace LibraryProject.Borrow
 
                                 // ISBN does not exist -> insert new book
                                 string insertSql = @"
-                                                INSERT INTO Transactions (ReaderID, BookID, BorrowDate, ReturnDate, IsReturn, DueDate)
-                                                VALUES (@ReaderID, @BookID, GETDATE(), NULL, 0, DATEADD(day, 14, GETDATE()))";
+                                                INSERT INTO Transactions (ReaderID, BookID, BorrowDate, ReturnDate, IsReturn, DueDate,Quantity,IsRemoved)
+                                                VALUES (@ReaderID, @BookID, GETDATE(), NULL, 0, DATEADD(day, 14, GETDATE()),@quantity,0)";
 
 
                                 using (var insertCmd = new SqlCommand(insertSql, conn))
@@ -213,35 +221,37 @@ namespace LibraryProject.Borrow
 
                                     insertCmd.Parameters.AddWithValue("@ReaderID", readerID);
                                     insertCmd.Parameters.AddWithValue("@BookID", bookID);
+                                    insertCmd.Parameters.AddWithValue("@quantity", quantity);
 
 
                                     int rowsInserted = insertCmd.ExecuteNonQuery();
                                     if (rowsInserted > 0)
                                     {
                                         // Update the book's available quantity
-                                string updateSql = "UPDATE Books SET AvailableQuantity = AvailableQuantity - 1 WHERE BookID = @BookID";
-                                using (var updateCmd = new SqlCommand(updateSql, conn))
-                                {
-                                    updateCmd.Parameters.AddWithValue("@BookID", bookID);
-                                    int rowsUpdated = updateCmd.ExecuteNonQuery();
-                                    if (rowsUpdated > 0)
-                                    {
-                                        // Successfully updated the book's quantity
-                                        MessageBox.Show("Book borrowed successfully.");
-                                        ButtonShowBorrow_Click(null, null); // Refresh the borrow list
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Failed to update book quantity.");
-                                    }
-                                }
+                                        string updateSql = "UPDATE Books SET AvailableQuantity = AvailableQuantity - @quantity WHERE BookID = @BookID";
+                                        using (var updateCmd = new SqlCommand(updateSql, conn))
+                                        {
+                                            updateCmd.Parameters.AddWithValue("@BookID", bookID);
+                                            updateCmd.Parameters.AddWithValue("@quantity", quantity);
+                                            int rowsUpdated = updateCmd.ExecuteNonQuery();
+                                            if (rowsUpdated > 0)
+                                            {
+                                                // Successfully updated the book's quantity
+                                                MessageBox.Show("Book borrowed successfully.");
+                                                ButtonShowBorrow_Click(null, null); // Refresh the borrow list
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Failed to update book quantity.");
+                                            }
+                                        }
 
                                     }
                                     else
                                         MessageBox.Show("Failed to add new reader.");
                                 }
 
-                                
+
                             }
                         }
                     }
@@ -261,21 +271,27 @@ namespace LibraryProject.Borrow
         {
             txtBookName.Clear();
             txtReaderName.Clear();
-            txtID.Clear();    
-            
+            txtID.Clear();
+
         }
 
-int selectedBookID = -1;
+        int selectedBookID = -1;
+        string selectedBookTitle = string.Empty;
+        int bookAvailableQuantity = 0;
+
         private void DataGridViewBook_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridViewBook.Rows[e.RowIndex];
 
                 selectedBookID = Convert.ToInt32(row.Cells["BookID"].Value);
+                selectedBookTitle = row.Cells["Title"].Value.ToString();
+                bookAvailableQuantity = Convert.ToInt32(row.Cells["AvailableQuantity"].Value);
             }
         }
         int selectedReaderID = -1;
+        string selectedReaderName = string.Empty;
         private void DataGridViewReader_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -283,9 +299,12 @@ if (e.RowIndex >= 0)
                 DataGridViewRow row = dataGridViewReader.Rows[e.RowIndex];
 
                 selectedReaderID = Convert.ToInt32(row.Cells["ReaderID"].Value);
+                selectedReaderName = row.Cells["FullName"].Value.ToString();
 
             }
         }
+
+
 
         private void ButtonShowBorrow_Click(object sender, EventArgs e)
         {
@@ -304,7 +323,8 @@ if (e.RowIndex >= 0)
                     r.FullName ,
                     b.Title ,
                     t.BorrowDate,
-                    t.DueDate
+                    t.DueDate,
+                    t.Quantity
 
                 FROM Transactions t
                 INNER JOIN Readers r ON t.ReaderID = r.ReaderID
@@ -322,6 +342,7 @@ if (e.RowIndex >= 0)
 
                     // Always show not returned
                     conditions.Add("t.isReturn = 0");
+                    conditions.Add("t.IsRemoved = 0");
 
                     // Add conditions to SQL
                     if (conditions.Count > 0)
@@ -332,11 +353,11 @@ if (e.RowIndex >= 0)
                     cmd.CommandText = sql;
                     cmd.Connection = conn;
 
-                     da = new SqlDataAdapter(cmd);
-                     ds = new DataSet();
-                     da.Fill(ds);
-                     dv = ds.Tables[0].DefaultView;
-                     dataGridViewBorrow.DataSource = dv;
+                    da = new SqlDataAdapter(cmd);
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    dv = ds.Tables[0].DefaultView;
+                    dataGridViewBorrow.DataSource = dv;
 
 
                     // Optional: set headers
@@ -348,9 +369,10 @@ if (e.RowIndex >= 0)
                     if (dataGridViewBorrow.Columns.Contains("FullName"))
                         dataGridViewBorrow.Columns["FullName"].HeaderText = "Reader Name";
 
-                    if (dataGridViewBorrow  .Columns.Contains("Title"))
+                    if (dataGridViewBorrow.Columns.Contains("Title"))
                         dataGridViewBorrow.Columns["Title"].HeaderText = "Book Title";
-
+                    if (dataGridViewBorrow.Columns.Contains("Quantity"))
+                        dataGridViewBorrow.Columns["Quantity"].HeaderText = "Quantity Borrowed";
                     if (dataGridViewBorrow.Columns.Contains("BorrowDate"))
                         dataGridViewBorrow.Columns["BorrowDate"].HeaderText = "Borrow Date";
 
@@ -400,13 +422,13 @@ if (e.RowIndex >= 0)
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if(dataGridViewBorrow.SelectedRows.Count == 0)
+            if (dataGridViewBorrow.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select a transaction to remove.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            using(var conn = Database.getConnection())
+            using (var conn = Database.getConnection())
             {
                 conn.Open();
                 try
@@ -415,7 +437,8 @@ if (e.RowIndex >= 0)
                     int transactionID = Convert.ToInt32(dataGridViewBorrow.SelectedRows[0].Cells["TransactionID"].Value);
                     // 1. Check if exists
                     int bookID;
-                    string checkSql = "SELECT BookID FROM Transactions WHERE TransactionID = @transactionID";
+                    int borrowQuantity = 1;
+                    string checkSql = "SELECT BookID,Quantity FROM Transactions WHERE TransactionID = @transactionID";
                     using (var checkCmd = new SqlCommand(checkSql, conn))
                     {
                         checkCmd.Parameters.AddWithValue("@transactionID", transactionID);
@@ -430,21 +453,25 @@ if (e.RowIndex >= 0)
                             else
                             {
                                 bookID = Convert.ToInt16(reader["BookID"]);
+                                borrowQuantity = Convert.ToInt16(reader["Quantity"]);
                             }
                         }
                     }
                     // 2. Delete the transaction
-                    string deleteSql = "DELETE FROM Transactions WHERE TransactionID = @transactionID";
+                    string deleteSql = "UPDATE Transactions SET IsRemoved = 1 WHERE TransactionID = @transactionID";
                     using (var deleteCmd = new SqlCommand(deleteSql, conn))
                     {
                         deleteCmd.Parameters.AddWithValue("@transactionID", transactionID);
                         int rowsAffected = deleteCmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            string updateSql = "UPDATE Books SET AvailableQuantity = AvailableQuantity + 1 WHERE BookID = @BookID";
+                            string updateSql = "UPDATE Books SET AvailableQuantity = AvailableQuantity + @borrowQuantity WHERE BookID = @BookID";
+
                             using (var updateCmd = new SqlCommand(updateSql, conn))
                             {
                                 updateCmd.Parameters.AddWithValue("@BookID", bookID);
+                                updateCmd.Parameters.AddWithValue("@borrowQuantity", borrowQuantity);
+                                MessageBox.Show("" + borrowQuantity);
                                 int rowsUpdated = updateCmd.ExecuteNonQuery();
                                 if (rowsUpdated > 0)
                                 {
@@ -627,7 +654,8 @@ if (e.RowIndex >= 0)
                     r.FullName ,
                     b.Title ,
                     t.BorrowDate,
-                    t.DueDate
+                    t.DueDate,
+                   t.Quantity
 
                 FROM Transactions t
                 INNER JOIN Readers r ON t.ReaderID = r.ReaderID
@@ -638,6 +666,7 @@ if (e.RowIndex >= 0)
 
                     // Always show not returned
                     conditions.Add("t.isReturn = 0");
+                    conditions.Add("t.IsRemoved = 0");
 
                     // Add conditions to SQL
                     if (conditions.Count > 0)
@@ -666,6 +695,9 @@ if (e.RowIndex >= 0)
 
                     if (dataGridViewBorrow.Columns.Contains("Title"))
                         dataGridViewBorrow.Columns["Title"].HeaderText = "Book Title";
+
+                    if (dataGridViewBorrow.Columns.Contains("Quantity"))
+                        dataGridViewBorrow.Columns["Quantity"].HeaderText = "Quantity Borrowed";
 
                     if (dataGridViewBorrow.Columns.Contains("BorrowDate"))
                         dataGridViewBorrow.Columns["BorrowDate"].HeaderText = "Borrow Date";
@@ -731,6 +763,12 @@ if (e.RowIndex >= 0)
                 }
             }
             return dt;
+        }
+
+        private void BtnBookRemoved_Click(object sender, EventArgs e)
+        {
+            FormRemovedBook formRemovedBook = new FormRemovedBook();
+            formRemovedBook.ShowDialog();
         }
     }
 }

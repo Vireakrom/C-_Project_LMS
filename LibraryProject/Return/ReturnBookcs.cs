@@ -48,7 +48,8 @@ namespace LibraryProject.Return
                     b.Title AS BookTitle,
                     b.ISBN AS BookISBN,
                     t.BorrowDate,
-                    t.DueDate
+                    t.DueDate,
+                    t.Quantity
 
                 FROM Transactions t
                 INNER JOIN Readers r ON t.ReaderID = r.ReaderID
@@ -78,6 +79,7 @@ namespace LibraryProject.Return
 
                     // Always show not returned
                     conditions.Add("t.isReturn = 0");
+                    conditions.Add("t.IsRemoved = 0");
 
                     // Add conditions to SQL
                     if (conditions.Count > 0)
@@ -110,6 +112,9 @@ namespace LibraryProject.Return
 
                     if (dataGridViewBorrow.Columns.Contains("BookISBN"))
                         dataGridViewBorrow.Columns["BookISBN"].HeaderText = "Book ISBN";
+
+                    if (dataGridViewBorrow.Columns.Contains("Quantity"))
+                        dataGridViewBorrow.Columns["Quantity"].HeaderText = "Quantity";
 
                     if (dataGridViewBorrow.Columns.Contains("BorrowDate"))
                         dataGridViewBorrow.Columns["BorrowDate"].HeaderText = "Borrow Date";
@@ -258,7 +263,8 @@ namespace LibraryProject.Return
                     b.Title AS BookTitle,
                     b.ISBN AS BookISBN,
                     t.BorrowDate,
-                    t.DueDate
+                    t.DueDate,
+                    t.Quantity
 
                 FROM Transactions t
                 INNER JOIN Readers r ON t.ReaderID = r.ReaderID
@@ -270,6 +276,7 @@ namespace LibraryProject.Return
 
                     // Always show not returned
                     conditions.Add("t.isReturn = 0");
+                    conditions.Add("t.IsRemoved = 0");
 
                     // Add conditions to SQL
                     if (conditions.Count > 0)
@@ -303,6 +310,9 @@ namespace LibraryProject.Return
                     if (dataGridViewBorrow.Columns.Contains("BookISBN"))
                         dataGridViewBorrow.Columns["BookISBN"].HeaderText = "Book ISBN";
 
+                    if (dataGridViewBorrow.Columns.Contains("Quantity"))
+                        dataGridViewBorrow.Columns["Quantity"].HeaderText = "Quantity";
+
                     if (dataGridViewBorrow.Columns.Contains("BorrowDate"))
                         dataGridViewBorrow.Columns["BorrowDate"].HeaderText = "Borrow Date";
 
@@ -327,5 +337,17 @@ namespace LibraryProject.Return
                 }
             }
         }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            // Clear all search fields
+            txt_id.Clear();
+            txt_reader_name.Clear();
+            txtTitle.Clear();
+            BtnShow_Click(null, null);
+
+        }
+
+
     }
 }

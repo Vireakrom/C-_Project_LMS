@@ -51,7 +51,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormReportReader";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormReportReader";
+            this.Text = "Report Reader";
             this.Load += new System.EventHandler(this.FormReportReader_Load);
             this.ResumeLayout(false);
 

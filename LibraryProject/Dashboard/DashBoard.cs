@@ -51,7 +51,7 @@ namespace LibraryProject.Dashboard
         private void getTotalReader()
         {
             using (var conn = Database.getConnection())
-            using (var cmd = new SqlCommand("SELECT COUNT(*) FROM Readers WHERE isActive = 1", conn))
+            using (var cmd = new SqlCommand("SELECT COUNT(*) FROM Readers WHERE IsActive = 1", conn))
             {
                 try
                 {
@@ -69,7 +69,7 @@ namespace LibraryProject.Dashboard
         private void getTotalBookBorrow()
         {
             using (var conn = Database.getConnection())
-            using (var cmd = new SqlCommand("SELECT COUNT(*) FROM Transactions", conn))
+            using (var cmd = new SqlCommand("SELECT COUNT(*) FROM Transactions WHERE IsReturn = 0", conn))
             {
                 try
                 {
